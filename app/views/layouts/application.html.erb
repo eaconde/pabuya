@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bounty</title>
+  <title>Pabuya!</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="nav-md">
+  <div class="container body">
+    <% flash.each do |key, value| %>
+        <div align="center" id="flash" class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
 
-<%= yield %>
+    <%= render "partials/sidenav" %>
+    <%= render "partials/topnav" %>
 
+    <div class="right_col" role="main">
+      <%= yield %>
+    </div>
+
+    <%= render "partials/footer" %>
+    <%= javascript_include_tag 'gentelella/build/js/custom', 'data-turbolinks-track' => true %>
+
+  </div>
 </body>
 </html>
