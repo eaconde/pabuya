@@ -1,0 +1,19 @@
+{
+  "name": "Bounty",
+  "authors": [
+    "Eric Conde <condeeric@live.com>"
+  ],
+  "description": "Rewards System",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "http://eaconde.github.io/",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
