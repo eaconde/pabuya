@@ -1,4 +1,4 @@
-class CatalogTypesController < ApplicationController
+class Admin::CatalogTypesController < AdminController
   before_action :set_catalog_type, only: [:show, :edit, :update, :destroy]
 
   # GET /catalog_types
