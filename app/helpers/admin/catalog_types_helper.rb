@@ -1,2 +1,2 @@
-module CatalogTypesHelper
+module Admin::CatalogTypesHelper
 end
