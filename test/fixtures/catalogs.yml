@@ -4,10 +4,10 @@ one:
   name: MyString
   description: MyString
   points: MyString
-  catalog_type_id: 
+  categories_id: 
 
 two:
   name: MyString
   description: MyString
   points: MyString
-  catalog_type_id: 
+  categories_id: 

@@ -1,1 +1,0 @@
-json.array! @catalog_types, partial: 'catalog_types/catalog_type', as: :catalog_type

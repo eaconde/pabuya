@@ -1,1 +1,0 @@
-json.partial! "catalog_types/catalog_type", catalog_type: @catalog_type

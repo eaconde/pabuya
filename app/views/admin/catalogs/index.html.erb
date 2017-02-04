@@ -19,7 +19,7 @@
         <td><%= catalog.name %></td>
         <td><%= catalog.description %></td>
         <td><%= catalog.points %></td>
-        <td><%= catalog.catalog_type_id %></td>
+        <td><%= catalog.categories_id %></td>
         <td><%= link_to 'Show', [:admin, catalog] %></td>
         <td><%= link_to 'Edit', edit_admin_catalog_path(catalog) %></td>
         <td><%= link_to 'Destroy', [:admin, catalog], method: :delete, data: { confirm: 'Are you sure?' } %></td>

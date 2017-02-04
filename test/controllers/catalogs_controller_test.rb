@@ -18,7 +18,7 @@ class CatalogsControllerTest < ActionController::TestCase
 
   test "should create catalog" do
     assert_difference('Catalog.count') do
-      post :create, catalog: { catalog_type_id: @catalog.catalog_type_id, description: @catalog.description, name: @catalog.name, points: @catalog.points }
+      post :create, catalog: { categories_id: @catalog.categories_id, description: @catalog.description, name: @catalog.name, points: @catalog.points }
     end
 
     assert_redirected_to catalog_path(assigns(:catalog))
@@ -35,7 +35,7 @@ class CatalogsControllerTest < ActionController::TestCase
   end
 
   test "should update catalog" do
-    patch :update, id: @catalog, catalog: { catalog_type_id: @catalog.catalog_type_id, description: @catalog.description, name: @catalog.name, points: @catalog.points }
+    patch :update, id: @catalog, catalog: { categories_id: @catalog.categories_id, description: @catalog.description, name: @catalog.name, points: @catalog.points }
     assert_redirected_to catalog_path(assigns(:catalog))
   end
 

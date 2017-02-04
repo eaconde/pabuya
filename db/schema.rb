@@ -11,27 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170131161625) do
+ActiveRecord::Schema.define(version: 20170204143105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "catalog_types", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "catalogs", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.string   "points"
-    t.integer  "catalog_type_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "categories_id"
   end
 
-  add_index "catalogs", ["catalog_type_id"], name: "index_catalogs_on_catalog_type_id", using: :btree
+  add_index "catalogs", ["categories_id"], name: "index_catalogs_on_categories_id", using: :btree
 
-  add_foreign_key "catalogs", "catalog_types"
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
