@@ -18,6 +18,7 @@
           <li><a href="#">My Rewards</a></li>
           <li><a href="<%= catalogs_path %>">Catalog</a></li>
           <li><a href="#">About</a></li>
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
         </ul>
       </div>
 

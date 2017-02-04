@@ -19,6 +19,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_sign_in_path_for(resource)
+    resource.admin? ? admin_catalogs_path : super
+  end
+
   private
 
   def layout_by_resource
