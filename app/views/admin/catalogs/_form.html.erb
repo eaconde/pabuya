@@ -1,33 +1,10 @@
-<%= form_for([:admin, @catalog]) do |f| %>
-  <% if @catalog.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@catalog.errors.count, "error") %> prohibited this catalog from being saved:</h2>
-
-      <ul>
-      <% @catalog.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :points %><br>
-    <%= f.text_field :points %>
-  </div>
-  <div class="field">
-    <%= f.label :categories_id %><br>
-    <%= f.text_field :categories_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= simple_form_for([:admin, @catalog]) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :points %>
+  <%= f.input :categories_id, collection: Category.all,
+                label_method: :name, value_method: :id,
+                prompt: "Select Category" %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+  <%= link_to 'Back', admin_catalogs_path, class: 'btn btn-default' %>
 <% end %>
