@@ -2,14 +2,14 @@
 
 <h1>Listing Catalogs</h1>
 
-<table>
+<table class="table table-striped table-bordered" cellspacing="0" width="100%">
   <thead>
     <tr>
       <th>Name</th>
       <th>Description</th>
       <th>Points</th>
-      <th>catalog type</th>
-      <th colspan="3"></th>
+      <th>Category</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -20,9 +20,11 @@
         <td><%= catalog.description %></td>
         <td><%= catalog.points %></td>
         <td><%= catalog.categories_id %></td>
-        <td><%= link_to 'Show', [:admin, catalog] %></td>
-        <td><%= link_to 'Edit', edit_admin_catalog_path(catalog) %></td>
-        <td><%= link_to 'Destroy', [:admin, catalog], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to 'Show', [:admin, catalog] %>
+          <%= link_to 'Edit', edit_admin_catalog_path(catalog) %>
+          <%= link_to 'Destroy', [:admin, catalog], method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>

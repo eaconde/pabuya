@@ -10,5 +10,5 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 css_assets = %w(admin.css theme1.css)
-js_assets = %w(admin.js gentelella/build/js/custom.js)
+js_assets = %w(admin.js admin/footer_manifest.js)
 Rails.application.config.assets.precompile += css_assets + js_assets
