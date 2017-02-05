@@ -21,3 +21,6 @@
 vendor/assets/components/
 
 .DS_Store
+
+# Bootsy added images
+public/uploads/

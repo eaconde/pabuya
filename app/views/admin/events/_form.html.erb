@@ -1,0 +1,19 @@
+<%= simple_form_for([:admin, @event]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :date_from %>
+    <%= f.input :date_to %>
+
+    <%= f.label "Mechanics" %>
+    <div class="well">
+      <%= f.input :description, type: :text, label: false,
+                    :input_html => {rows: 20}, as: :bootsy %>
+    </div>
+  </div>
+
+  <%= f.button :submit, class: 'btn btn-primary' %>
+  <%= link_to 'Back', admin_events_path, class: 'btn btn-default' %>
+
+<% end %>
