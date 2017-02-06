@@ -3,7 +3,9 @@
 module MenuHelper
   ADMIN_MENUS = {
     catalogs: { name: "Catalogs", path: '/admin/catalogs', icon: 'list-alt' },
-    categories: { name: "Categories", path: '/admin/categories', icon: 'pencil' }
+    categories: { name: "Categories", path: '/admin/categories', icon: 'pencil' },
+    events: { name: "Events", path: '/admin/events', icon: 'flash' },
+    submissions: { name: "Submissions", path: '/admin/user_event_submissions', icon: 'paper-plane' }
   }
 
   def app_menus

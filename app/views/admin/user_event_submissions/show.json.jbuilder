@@ -1,0 +1,1 @@
+json.partial! "user_event_submissions/user_event_submission", user_event_submission: @user_event_submission

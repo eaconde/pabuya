@@ -5,3 +5,4 @@
 //= require js_cookie
 //= require bootsy
 //= require admin/gentelella
+//= require admin/user_event_submissions

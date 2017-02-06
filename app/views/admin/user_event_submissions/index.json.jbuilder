@@ -1,0 +1,1 @@
+json.array! @user_event_submissions, partial: 'user_event_submissions/user_event_submission', as: :user_event_submission

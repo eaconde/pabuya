@@ -1,0 +1,21 @@
+<% read_only = local_assigns[:show] ? true : false %>
+<%= simple_form_for([:admin, @user_event_submission]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :user_id, readonly: read_only %>
+    <%= f.input :event_id, readonly: read_only %>
+    <%= f.input :attachment, readonly: read_only %>
+    <%= f.input :status, readonly: read_only, include_blank: false,
+                  collection: UserEventSubmission::SUBMISSION_STATUS.map {|k,v| [v,k.to_s]} %>
+    <%= f.input :points, readonly: read_only, as: :integer %>
+    <%= f.input :notes, readonly: read_only %>
+  </div>
+
+  <div class="form-actions">
+    <% unless read_only %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+    <% end  %>
+    <%= link_to 'Back', admin_user_event_submissions_path, class: 'btn btn-default' %>
+  </div>
+<% end %>

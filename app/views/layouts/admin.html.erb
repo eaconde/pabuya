@@ -21,7 +21,11 @@
 
     <%= render "partials/footer" %>
     <%= javascript_include_tag 'admin/footer_manifest', 'data-turbolinks-track' => true %>
-
   </div>
+
+  <%= javascript_tag do %>
+    window.page = '<%= controller.controller_name %>';
+    window.pageAction = '<%= controller.action_name %>';
+  <% end %>
 </body>
 </html>

@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Submissions</h1>
+
+<table class="table table-striped table-bordered" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Event</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_event_submissions.each do |submission| %>
+      <tr>
+        <td><%= submission.user.email %></td>
+        <td><%= submission.event.name %></td>
+        <td>
+          <% if submission.processed?  %>
+          <%= link_to 'Show', admin_user_event_submission_path(submission) %>
+          <% else  %>
+          <%= link_to 'Process', edit_admin_user_event_submission_path(submission) %>
+          <%= link_to 'Destroy', [:admin, submission], method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end  %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
