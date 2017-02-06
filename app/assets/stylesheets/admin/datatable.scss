@@ -1,5 +1,6 @@
 // Datatable related css
-
+th.action_section::after { display: none!important; }
+th.action_section { pointer-events: none!important; cursor: default!important; }
 td.action_section {
   width: 1%;
   white-space: nowrap;
