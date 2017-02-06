@@ -5,7 +5,6 @@
     <tr>
       <th>User</th>
       <th>Event</th>
-      <th>Attachment</th>
       <th>Date</th>
       <th></th>
     </tr>
@@ -19,23 +18,21 @@
         <td><%= submission.user.email %></td>
         <td><%= submission.event.name %></td>
         <td>
-          <% if submission.attachment_url %>
-            <%= link_to "Download Attachment", submission.attachment_url, target: "_blank" %>
-          <% else %>
-            <%= "No Attachment" %>
-          <% end %>
-        </td>
-        <td>
           <%= submission.created_at.strftime("%b %e, %Y") %>
         </td>
-        <td>
+        <td class="action_section">
+          <% if submission.attachment_url %>
+            <%= link_to_custom submission.attachment_url, "download", "Download" %>
+          <% end %>
+
           <% if submission.processed?  %>
-          <%= link_to 'Show', admin_user_event_submission_path(submission) %>
+          <%= link_to_show admin_user_event_submission_path(submission) %>
           <% else  %>
-          <%= link_to 'Process', edit_admin_user_event_submission_path(submission) %>
+          <%= link_to_custom edit_admin_user_event_submission_path(submission), "wrench", "Process" %>
           <% end  %>
+
           <% if submission.status != 'approved' %>
-          <%= link_to 'Destroy', [:admin, submission], method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to_destroy [:admin, submission] %>
           <% end %>
         </td>
       </tr>

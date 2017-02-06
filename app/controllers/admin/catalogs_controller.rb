@@ -28,7 +28,7 @@ class Admin::CatalogsController < AdminController
 
     respond_to do |format|
       if @catalog.save
-        format.html { redirect_to [:admin, @catalog], notice: 'Catalog was successfully created.' }
+        format.html { redirect_to admin_catalogs_url, notice: 'Catalog was successfully created.' }
         format.json { render :show, status: :created, location: @catalog }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::CatalogsController < AdminController
   def update
     respond_to do |format|
       if @catalog.update(catalog_params)
-        format.html { redirect_to [:admin, @catalog], notice: 'Catalog was successfully updated.' }
+        format.html { redirect_to admin_catalogs_url, notice: 'Catalog was successfully updated.' }
         format.json { render :show, status: :ok, location: @catalog }
       else
         format.html { render :edit }

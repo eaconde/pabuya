@@ -18,10 +18,10 @@
         <td><%= catalog.description %></td>
         <td><%= catalog.points %></td>
         <td><%= catalog.categories_id %></td>
-        <td>
-          <%= link_to 'Show', [:admin, catalog] %>
-          <%= link_to 'Edit', edit_admin_catalog_path(catalog) %>
-          <%= link_to 'Destroy', [:admin, catalog], method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td class="action_section">
+          <%= link_to_show [:admin, catalog] %>
+          <%= link_to_edit edit_admin_catalog_path(catalog) %>
+          <%= link_to_destroy [:admin, catalog] %>
         </td>
       </tr>
     <% end %>

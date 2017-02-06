@@ -20,10 +20,10 @@
         <td><%= event.description %></td>
         <td><%= event.date_from %></td>
         <td><%= event.date_to %></td>
-        <td>
-          <%= link_to 'Show', [:admin, event] %>
-          <%= link_to 'Edit', edit_admin_event_path(event) %>
-          <%= link_to 'Destroy', [:admin, event], method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td class="action_section">
+          <%= link_to_show [:admin, event] %>
+          <%= link_to_edit edit_admin_event_path(event) %>
+          <%= link_to_destroy [:admin, event] %>
         </td>
       </tr>
     <% end %>
