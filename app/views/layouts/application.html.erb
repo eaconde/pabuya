@@ -9,13 +9,11 @@
 </head>
 <body class="nav-md">
   <div class="container">
-    <% flash.each do |key, value| %>
-        <div align="center" id="flash" class="alert alert-<%= key %>"><%= value %></div>
-    <% end %>
-
     <%= render "partials/header" %>
-
+    
     <div class="content">
+      <div class="clearfix"></div>
+      <%= flash_messages %>
       <%= yield %>
     </div>
 

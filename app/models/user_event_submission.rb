@@ -1,4 +1,6 @@
 class UserEventSubmission < ActiveRecord::Base
+  mount_uploader :attachment, AttachmentUploader
+
   belongs_to :user
   belongs_to :event
 
@@ -9,6 +11,8 @@ class UserEventSubmission < ActiveRecord::Base
 
   validates :user, presence: true
   validates :event, presence: true
+  validates :attachment, presence: true
+  validates :status, presence: true, unless: :new_record?
   validates :points, presence: true, numericality: { greater_than: 0 },
               if: lambda { |s| s.status == 'approved' }
 

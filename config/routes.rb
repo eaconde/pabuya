@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :catalogs
     resources :categories
     resources :events
-    resources :user_event_submissions, :path_names => { :edit => 'process' }
+    resources :user_event_submissions, only: [:index, :edit, :update, :destroy],
+                :path_names => { :edit => 'process' }
   end
 end
