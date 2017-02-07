@@ -28,7 +28,7 @@ class UserEventSubmission < ActiveRecord::Base
 
   after_update do |submission|
     submission.date_processed = Time.now
-    # send email to user
+    UserMailer.submission_notification(submission).deliver_now
   end
 
   def processed?

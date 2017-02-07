@@ -32,5 +32,15 @@ module Bounty
     config.assets.precompile << %r(gentelella/vendors/font-awesome/fonts/[\w-]+\.(?:eot|svg|ttf|woff2?)$)
     # Minimum Sass number precision required by bootstrap-sass
     ::Sass::Script::Value::Number.precision = [8, ::Sass::Script::Value::Number.precision].max
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address:              ENV['MAILER_ADDRESS'],
+      port:                 ENV['MAILER_PORT'],
+      domain:               ENV['MAILER_DOMAIN'],
+      user_name:            ENV['MAILER_EMAIL'],
+      password:             ENV['MAILER_PWD'],
+      authentication:       ENV['MAILER_AUTHTYPE'],
+      enable_starttls_auto: true  }
   end
 end

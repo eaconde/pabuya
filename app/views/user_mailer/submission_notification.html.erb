@@ -1,0 +1,16 @@
+<h1>Hello <%= @user.email %>,</h1>
+<p>
+  We have received your submission for the <strong><%= @submission.event.name %></strong> event.
+</p>
+
+<% if @submission.approved? %>
+  <p>
+    <strong>Congratulations!</strong> You have just been credited with an additional <%= @submission.points %> points! You can opt to <%= link_to "redeem points now", @redeem_path, target: "_blank" %> or save it for later on higher rewards.
+  </p>
+<% else %>
+  <p>
+    It was however been declined. Please make sure to follow the guidelines and mechanics  specified for this event found <%= link_to "here", @event_path, target: "_blank" %>. Feel free to submit another entry and get the chance to earn more points!
+  </p>
+<% end %>
+
+<strong>Pabuya!</strong>
