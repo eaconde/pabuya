@@ -31,7 +31,7 @@
           <%= link_to_custom edit_admin_user_event_submission_path(submission), "wrench", "Process" %>
           <% end  %>
 
-          <% if submission.status != 'approved' %>
+          <% if submission.approved? %>
           <%= link_to_destroy [:admin, submission] %>
           <% end %>
         </td>
