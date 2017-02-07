@@ -14,8 +14,6 @@ init_datatable = ->
   $('.table').dataTable()
 
 jQuery ->
-  console.log "MISC LOADED"
-
   # load sidenav state
   init_navstate()
 

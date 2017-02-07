@@ -10,7 +10,4 @@ root.tag_page = (page_name) ->
     page_tags[arguments[i]] = true
 
 root.run_ontag = (tag, fn) ->
-  console.log "run_ontag >> ", tag
-  if page_tags[tag]
-    console.log "running fn for ", tag
-    fn()
+  fn() if page_tags[tag]
