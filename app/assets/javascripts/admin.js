@@ -4,5 +4,6 @@
 //= require bootstrap-sprockets
 //= require js_cookie
 //= require bootsy
+//= require misc
 //= require admin/gentelella
 //= require admin/user_event_submissions

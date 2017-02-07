@@ -1,0 +1,4 @@
+<%= javascript_tag do %>
+  tag_page('<%= "#{controller.controller_name}" %>')
+  tag_page('<%= "#{controller.controller_name}_#{controller.action_name}" %>')
+<% end %>
