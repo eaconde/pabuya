@@ -42,10 +42,11 @@
             <span class="badge bg-green">6</span>
           </a>
           <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+            <% 5.times do  %>
             <li>
               <a>
                       <span class="image">
-                                        <%= image_tag "img.jpg" %>
+                                        <%= image_tag "https://placeholdit.imgix.net/~text?txtsize=33&txt=140×100&w=140&h=100" %>
                                     </span>
                       <span>
                                         <span>John Smith</span>
@@ -56,48 +57,7 @@
                                     </span>
               </a>
             </li>
-            <li>
-              <a>
-                      <span class="image">
-                                       <%= image_tag "img.jpg" %>
-                                    </span>
-                      <span>
-                                        <span>John Smith</span>
-                      <span class="time">3 mins ago</span>
-                      </span>
-                      <span class="message">
-                                        Film festivals used to be do-or-die moments for movie makers. They were where...
-                                    </span>
-              </a>
-            </li>
-            <li>
-              <a>
-                      <span class="image">
-                                       <%= image_tag "img.jpg" %>
-                                    </span>
-                      <span>
-                                        <span>John Smith</span>
-                      <span class="time">3 mins ago</span>
-                      </span>
-                      <span class="message">
-                                        Film festivals used to be do-or-die moments for movie makers. They were where...
-                                    </span>
-              </a>
-            </li>
-            <li>
-              <a>
-                      <span class="image">
-                                        <%= image_tag "img.jpg" %>
-                                    </span>
-                      <span>
-                                        <span>John Smith</span>
-                      <span class="time">3 mins ago</span>
-                      </span>
-                      <span class="message">
-                                        Film festivals used to be do-or-die moments for movie makers. They were where...
-                                    </span>
-              </a>
-            </li>
+            <% end %>
             <li>
               <div class="text-center">
                 <a>
