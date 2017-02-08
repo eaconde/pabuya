@@ -1,9 +1,11 @@
 <% read_only = local_assigns[:show] ? true : false %>
 <%= simple_form_for([:admin, @user_event_submission]) do |f| %>
   <div class="form-inputs">
-    <%= f.input :user_id, readonly: read_only %>
-    <%= f.input :event_id, readonly: read_only %>
-    <%= f.file_field :attachment, readonly: read_only %>
+    <%= f.association :user, disabled: true,
+          label_method: :email, value_method: :id, include_blank: false %>
+    <%= f.association :event, disabled: true,
+          label_method: :name, value_method: :id, include_blank: false %>
+    <%= f.input :attachment, as: :attachment_preview %>
     <%= f.input :status, readonly: read_only, include_blank: true,
                   collection: UserEventSubmission::SUBMISSION_STATUS.map {|k,v| [v,k.to_s]} %>
     <%= f.input :points, readonly: read_only, as: :integer %>

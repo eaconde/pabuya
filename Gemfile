@@ -21,5 +21,6 @@ group :development do
 end
 
 gem 'simple_form'
+gem 'simple_form_fancy_uploads'
 gem 'devise'
 gem 'bootsy'
