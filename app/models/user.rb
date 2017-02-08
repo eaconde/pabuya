@@ -5,4 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :user_event_submissions
+
+  def total_points
+    user_event_submissions.to_a.sum(&:points)
+  end
+
+  def reached_point_limit_for(event)
+    total_points >= event.max_points
+  end
 end

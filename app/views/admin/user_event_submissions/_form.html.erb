@@ -1,5 +1,15 @@
 <% read_only = local_assigns[:show] ? true : false %>
 <%= simple_form_for([:admin, @user_event_submission]) do |f| %>
+  <% if @user_event_submission.check_point_limits %>
+  <div class="alert alert-warning">
+    <span>
+      WARNING: User has already received <%= @user_event_submission.user.total_points %> points for this event period.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </span>
+  </div>
+  <% end %>
   <div class="form-inputs">
     <%= f.association :user, disabled: true,
           label_method: :email, value_method: :id, include_blank: false %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170205055451) do
+ActiveRecord::Schema.define(version: 20170208153047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,8 +52,10 @@ ActiveRecord::Schema.define(version: 20170205055451) do
     t.string   "description"
     t.string   "date_from"
     t.string   "date_to"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.string   "event_range",      default: "monthly"
+    t.integer  "range_max_points", default: 2
   end
 
   create_table "user_event_submissions", force: :cascade do |t|

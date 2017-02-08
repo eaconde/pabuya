@@ -19,7 +19,8 @@ class UserEventSubmission < ActiveRecord::Base
   validates :event, presence: true
   validates :attachment, presence: true
   validates :status, presence: true, unless: :new_record?
-  validates :points, presence: true, numericality: { greater_than: 0 },
+  validates :points, presence: true,
+              numericality: { greater_than: 0, less_than_or_equal_to: 2 },
               if: lambda { |s| s.approved? }
 
   before_update do |submission|
@@ -33,6 +34,11 @@ class UserEventSubmission < ActiveRecord::Base
 
   def processed?
     !self.date_processed.blank?
+  end
+
+  def check_point_limits
+    return false if approved?
+    user.reached_point_limit_for(event)
   end
 
 
