@@ -21,6 +21,7 @@ class Cart < ActiveRecord::Base
   before_update do |cart|
     unless cart.approved?
       cart.approved_at = Date.today
+      cart.status = 'processing'
     end
   end
 

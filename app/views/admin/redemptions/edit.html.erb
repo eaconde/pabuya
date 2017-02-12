@@ -47,7 +47,7 @@
             <td><%= cart_detail.catalog.points %></td>
             <td>
               <%= ff.input :approved, as: :boolean, label: false,
-                    checked_value: true, unchecked_value: false %>
+                    checked_value: true, unchecked_value: false, disabled: @redemption.approved? %>
             </td>
           </tr>
           <% end %>
@@ -57,10 +57,15 @@
   </div>
 </div>
 
-  <%= f.button :submit, "Confirm", class: 'btn btn-primary' %>
-  <%= link_to 'Back', admin_redemptions_path, class: 'btn btn-default' %>
-  <p>
-    <strong>NOTE: </strong>
-    <i>Confirming will send an email to the user that their redemption is being processed.</i>
-  </p>
+  <% if @redemption.approved? %>
+    <%= link_to 'Back', admin_redemptions_path, class: 'btn btn-default' %>
+  <% else %>
+    <%= f.button :submit, "Confirm", class: 'btn btn-primary' %>
+    <%= link_to 'Back', admin_redemptions_path, class: 'btn btn-default' %>
+    <p>
+      <strong>NOTE: </strong>
+      <i>Confirming will send an email to the user that their redemption is being processed.</i>
+    </p>
+  <% end %>
+
 <% end %>
