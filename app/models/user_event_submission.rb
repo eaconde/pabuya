@@ -3,6 +3,11 @@ class UserEventSubmission < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :event
+  belongs_to :event_period
+
+  scope :within_active_period, -> {
+    joins(:event_period).where("user_event_submissions.created_at BETWEEN
+                                    event_periods.date_from AND event_periods.date_to") }
 
   SUBMISSION_STATUS = {
     approved: "Approved",
@@ -23,13 +28,17 @@ class UserEventSubmission < ActiveRecord::Base
               numericality: { greater_than: 0, less_than_or_equal_to: 2 },
               if: lambda { |s| s.approved? }
 
+  before_create do |submission|
+    submission.event_period = submission.event.event_period.active_period
+  end
+
   before_update do |submission|
     submission.points = 0 if submission.declined?
   end
 
   after_update do |submission|
     submission.date_processed = Time.now
-    UserMailer.submission_notification(submission).deliver_now
+    UserMailer.submission_notification(submission).deliver_later
   end
 
   def processed?

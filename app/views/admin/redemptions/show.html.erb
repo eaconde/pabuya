@@ -1,0 +1,51 @@
+<h1>Show Redemption</h1>
+
+<div class="col-sm-12">
+  <div class="well">
+    <div class="row">
+      <div class="col-sm-6">
+        <strong>Name:</strong>&nbsp;<%= @redemption.user.email %>
+        <br>
+        <strong>Points:</strong>&nbsp;<%= @redemption.user.total_points %>
+      </div>
+
+      <div class="col-sm-6">
+        <strong>Status:</strong>&nbsp;<%= Cart::CART_STATUSES[@redemption.status.to_sym] %>
+      </div>
+    </div>
+  </div>
+
+  <div class="well">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Qty</th>
+          <th>Catalog</th>
+          <th>Serial</th>
+          <th>Description</th>
+          <th>Cost</th>
+          <th class="action_section"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_details.each do |cart_detail|  %>
+        <tr>
+          <td><%= cart_detail.qty %></td>
+          <td><%= cart_detail.catalog.name %></td>
+          <td>#<%= 6.times.map { rand(9) }.join %></td>
+          <td>Description ...</td>
+          <td><%= cart_detail.catalog.points %></td>
+          <td>
+            Action
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+<%#= link_to 'Edit', edit_admin_redemption_path(@redemption) %>
+<%= link_to 'Back', admin_redemptions_path %>

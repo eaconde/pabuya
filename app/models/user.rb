@@ -5,9 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :user_event_submissions
+  has_many :carts
 
   def total_points
-    user_event_submissions.to_a.sum(&:points)
+    user_event_submissions.within_active_period.to_a.sum(&:points)
   end
 
   def reached_point_limit_for(event)

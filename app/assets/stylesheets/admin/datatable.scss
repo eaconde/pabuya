@@ -1,4 +1,15 @@
 // Datatable related css
+table {
+  &.no-sort {
+    th::after { display: none!important; }
+    th { pointer-events: none!important; cursor: default!important; }
+    td {
+      width: 1%;
+      white-space: nowrap;
+    }
+  }
+}
+
 th.action_section::after { display: none!important; }
 th.action_section { pointer-events: none!important; cursor: default!important; }
 td.action_section {

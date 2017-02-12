@@ -5,9 +5,10 @@ module MenuHelper
     catalogs: { name: "Catalogs", path: '/admin/catalogs', icon: 'list-alt' },
     categories: { name: "Categories", path: '/admin/categories', icon: 'pencil' },
     events: { name: "Events", path: '/admin/events', icon: 'flash' },
-    submissions: { name: "Submissions", path: '/admin/user_event_submissions', icon: 'paper-plane' }
+    submissions: { name: "Submissions", path: '/admin/user_event_submissions', icon: 'paper-plane' },
+    redemptions: { name: "Redemptions", path: '/admin/redemptions', icon: 'shopping-cart' }
   }
-  
+
   ACTION_METHODS = {
     show:    { icon: 'folder-open', html_options: { title: 'Show' } },
     edit:    { icon: 'pencil', html_options: { title: 'Edit' } },

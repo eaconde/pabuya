@@ -15,7 +15,7 @@
           label_method: :email, value_method: :id, include_blank: false %>
     <%= f.association :event, disabled: true,
           label_method: :name, value_method: :id, include_blank: false %>
-    <%= f.input :attachment, as: :attachment_preview %>
+    <%= f.input :attachment, as: :attachment_preview, disabled: true %>
     <%= f.input :status, readonly: read_only, include_blank: true,
                   collection: UserEventSubmission::SUBMISSION_STATUS.map {|k,v| [v,k.to_s]} %>
     <%= f.input :points, readonly: read_only, as: :integer %>

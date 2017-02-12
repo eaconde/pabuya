@@ -11,6 +11,13 @@ init_navstate = ->
 
 
 init_datatable = ->
+  # TODO: page specific init of dt with own options
+  # {
+  #   "paging":    false,
+  #   "ordering":  false,
+  #   "info":      false,
+  #   "searching": false
+  # }
   $('.table').dataTable()
 
 jQuery ->

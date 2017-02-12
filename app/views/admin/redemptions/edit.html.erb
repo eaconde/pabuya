@@ -1,0 +1,66 @@
+<h1>
+  <span>Redemption #<%= @redemption.id %></span>
+</h1>
+<%= @redemption.created_at %>
+<br/><br/>
+
+<%= simple_form_for(@redemption, url: admin_redemption_path) do |f| %>
+  <%= f.hidden_field :user %>
+<div class="col-sm-12">
+  <div class="">
+    <div class="row">
+      <div class="col-sm-6">
+        <strong>Name:</strong>&nbsp;<%= @redemption.user.email %>
+        <br>
+        <strong>Points:</strong>&nbsp;<%= @redemption.user.total_points %>
+        <br>
+        <strong>Status:</strong>&nbsp;<%= Cart::CART_STATUSES[@redemption.status.to_sym] %>
+      </div>
+
+      <div class="col-sm-6">
+        <strong>Status:</strong>&nbsp;<%= Cart::CART_STATUSES[@redemption.status.to_sym] %>
+      </div>
+    </div>
+  </div>
+
+  <div class="">
+    <table class="table table-striped no-sort no-info no-paging no-search">
+      <thead>
+        <tr>
+          <th>Qty</th>
+          <th>Catalog</th>
+          <th>Serial</th>
+          <th>Description</th>
+          <th>Cost</th>
+          <th class="action_section">Approve</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_details.each do |cart_detail| %>
+          <%= f.simple_fields_for :cart_details, cart_detail do |ff| %>
+          <tr>
+            <%= ff.hidden_field :id  %>
+            <td><%= cart_detail.qty %></td>
+            <td><%= link_to cart_detail.catalog.name, admin_catalog_path(cart_detail.catalog) %></td>
+            <td>#<%= 6.times.map { rand(9) }.join %></td>
+            <td>Description ...</td>
+            <td><%= cart_detail.catalog.points %></td>
+            <td>
+              <%= ff.input :approved, as: :boolean, label: false,
+                    checked_value: true, unchecked_value: false %>
+            </td>
+          </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  <%= f.button :submit, "Confirm", class: 'btn btn-primary' %>
+  <%= link_to 'Back', admin_redemptions_path, class: 'btn btn-default' %>
+  <p>
+    <strong>NOTE: </strong>
+    <i>Confirming will send an email to the user that their redemption is being processed.</i>
+  </p>
+<% end %>

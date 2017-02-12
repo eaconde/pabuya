@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Redemptions</h1>
+
+<table class="table table-striped table-bordered" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th class="action_section"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @redemptions.each do |redemption| %>
+      <tr>
+        <td><%= redemption.user.email %></td>
+        <td><%= redemption.cart_date %></td>
+        <td><%= Cart::CART_STATUSES[redemption.status.to_sym] %></td>
+        <td class="action_section">
+          <%= link_to_edit edit_admin_redemption_path(redemption) %>
+          <%= link_to_destroy admin_redemption_path(redemption) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

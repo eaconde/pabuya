@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170208153047) do
+ActiveRecord::Schema.define(version: 20170212123719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,30 @@ ActiveRecord::Schema.define(version: 20170208153047) do
     t.datetime "updated_at"
   end
 
+  create_table "cart_details", force: :cascade do |t|
+    t.integer  "cart_id"
+    t.integer  "catalog_id"
+    t.integer  "qty"
+    t.integer  "cost"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "approved",   default: false
+  end
+
+  add_index "cart_details", ["cart_id"], name: "index_cart_details_on_cart_id", using: :btree
+  add_index "cart_details", ["catalog_id"], name: "index_cart_details_on_catalog_id", using: :btree
+
+  create_table "carts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "cart_date"
+    t.string   "status",      default: "pending"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.datetime "approved_at"
+  end
+
+  add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
+
   create_table "catalogs", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -46,6 +70,16 @@ ActiveRecord::Schema.define(version: 20170208153047) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "event_periods", force: :cascade do |t|
+    t.integer  "event_id"
+    t.datetime "date_from"
+    t.datetime "date_to"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "event_periods", ["event_id"], name: "index_event_periods_on_event_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -64,11 +98,14 @@ ActiveRecord::Schema.define(version: 20170208153047) do
     t.datetime "date_processed"
     t.string   "attachment"
     t.string   "status"
-    t.integer  "points",         default: 0
+    t.integer  "points",          default: 0
     t.string   "notes"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "event_period_id"
   end
+
+  add_index "user_event_submissions", ["event_period_id"], name: "index_user_event_submissions_on_event_period_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -89,4 +126,9 @@ ActiveRecord::Schema.define(version: 20170208153047) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "cart_details", "carts"
+  add_foreign_key "cart_details", "catalogs"
+  add_foreign_key "carts", "users"
+  add_foreign_key "event_periods", "events"
+  add_foreign_key "user_event_submissions", "event_periods"
 end

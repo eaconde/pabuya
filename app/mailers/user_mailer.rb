@@ -12,4 +12,8 @@ class UserMailer < ApplicationMailer
     @redeem_path = "http://localhost:3000/catalogs" #routes.redeem_path
     mail(to: @user.email, subject: 'Event Submission Received')
   end
+
+  def redemption_notification(redemption)
+    
+  end
 end
